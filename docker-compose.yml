@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+    environment: 
+        - VITE_WS_HOST=server
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
