@@ -1,24 +1,36 @@
-# Real-Time Log Viewer
+# Real-Time Log Viewer Project
 
 ## Project Description
 
-**Real-Time Log Viewer** is a **web-based log tailing tool**, inspired by the `tail -f` command. It streams log messages in real time from a mock server to a browser-based client interface.
+**Real-Time Log Viewer** is a web-based log tailing tool, similar to `tail -f`. It streams log messages in real time from a mock server to a browser-based client interface.
 
+---
+
+## Components
 The project consists of two main components:
+### 1. Server
+A lightweight Node.js WebSocket server (built with the `ws` library) that continuously generates and broadcasts mock log events. Each log message is emitted at regular intervals and includes:
 
-1. **Server:** A Node.js WebSocket server that generates and broadcasts log messages continuously.
-2. **Client:** A React + Vite frontend that connects to the server via WebSocket and displays incoming logs live, providing a real-time log viewing experience.
+- Timestamp
+- Level (`INFO`, `WARN`, `ERROR`)
+- Message
 
-This tool is ideal for simulating real-time log monitoring in a web environment, without relying on a terminal.
+### 2. Client
+A React + Vite frontend application that connects to the WebSocket server and displays incoming logs in real time. Each log entry is color-coded based on severity and rendered in a scrolling log viewer.
 
 ---
 
 ## Features
 
-* Real-time streaming of logs from server to client.
-* Browser-based UI for live log visualization.
-* Dockerized setup for quick deployment.
-* Configurable WebSocket URL via environment variables.
+- **Real-time log streaming** from the WebSocket server to the browser.
+- **Color-coded log lines** based on severity (`INFO`, `WARN`, `ERROR`).
+- **Intelligent auto-scrolling:**  
+  Automatically scrolls only if the user is already at the bottom, preventing interruptions while reviewing older logs.
+- **Playback controls:**  
+  Includes **Pause/Resume** and **Clear** buttons to manage the log output.
+- **Browser-based UI** for easy log visualization.
+- **Dockerized setup** for simple and consistent deployment.
+- **Configurable WebSocket URL** via environment variables for flexible integration.
 
 ---
 
@@ -33,14 +45,14 @@ This tool is ideal for simulating real-time log monitoring in a web environment,
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/letduong2021/real-time-log-viewer.git
 cd real-time-log-viewer
 ```
 
 2. Build and start the containers:
 
 ```bash
-docker compose up --build
+docker-compose up
 ```
 
 3. Access the application in your browser:
@@ -63,10 +75,7 @@ real-time-log-viewer/
 ├─ .github/                 # GitHub workflows
 │  └─ workflows/            # CI/CD workflow files
 │     └─ ci.yml
-├─ .git/                    # Git hooks
-│  └─ hooks/                # pre-commit hooks
 ├─ client/                  # React frontend
-│  ├─ node_modules/
 │  ├─ src/
 │  │  ├─ App.jsx
 │  │  ├─ main.jsx
@@ -87,23 +96,5 @@ real-time-log-viewer/
 ├─ README.md
 └─ docker-compose.yml
 ```
-
----
-
-## Environment Variables
-
-* `VITE_WS_URL` — WebSocket URL for the client to connect to the server (default: `ws://server:8080`).
-
-  * Configured in `docker-compose.yml` under the client service.
-
----
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-name`).
-3. Make your changes and commit (`git commit -m "Add feature"`).
-4. Push to branch (`git push origin feature-name`).
-5. Open a pull request.
 
 ---
