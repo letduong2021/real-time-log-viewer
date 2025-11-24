@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const webSocketService = new WebSocket.Server({ host: '0.0.0.0', port: 8080 });
+const webSocketServer = new WebSocket.Server({ host: '0.0.0.0', port: 8080 });
 
 const levels = ['INFO', 'WARN', 'ERROR'];
 
@@ -14,7 +14,7 @@ function generateLog() {
     });
 }
 
-webSocketService.on('connection', webSocket => {
+webSocketServer.on('connection', webSocket => {
     console.log('Client connected');
 
     const interval = setInterval(() => {
