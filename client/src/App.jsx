@@ -32,7 +32,7 @@ export default function WebSocketLogger() {
 
         webSocketsRef.current.onerror = (err) => {
             console.error("WebSocket error:", err);
-            setStatus("Error");
+            setStatus("WebSocket error");
         };
 
         webSocketsRef.current.onclose = () => {
