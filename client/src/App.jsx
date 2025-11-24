@@ -70,7 +70,7 @@ export default function WebSocketLogger() {
             <div className="status-bar">
                 Status:{" "}
                 <strong>
-                    {status === "WebSocket disconnected" || status === "Error"
+                    {status === "WebSocket disconnected" || status === "WebSocket error"
                         ? status
                         : paused
                             ? "Paused"
@@ -91,7 +91,7 @@ export default function WebSocketLogger() {
                         className={`log-row level-${log.level.toUpperCase()}`}
                     >
                         <span className="col-time">{formatTime(log.timestamp)}</span>
-                        <span className={`col-level level-${log.level}`}>
+                        <span className={`col-level`}>
                             {log.level.toUpperCase()}
                         </span>
                         <span className="col-message">{log.message}</span>
