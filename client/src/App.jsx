@@ -65,7 +65,7 @@ export default function WebSocketLogger() {
 
     return (
         <div className="log-viewer">
-            <h1>Twin Peaks Log Viewer</h1>
+            <h1>Real-Time Log Viewer</h1>
 
             <div className="status-bar">
                 Status:{" "}

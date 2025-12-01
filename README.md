@@ -63,7 +63,7 @@ docker-compose up
 4. To stop the containers:
 
 ```bash
-docker compose down
+docker-compose down
 ```
 
 ---
@@ -87,7 +87,6 @@ real-time-log-viewer/
 │  ├─ package.json
 │  └─ vite.config.js
 ├─ server/                  # Node.js WebSocket server
-│  ├─ node_modules/
 │  ├─ .eslintrc.json
 │  ├─ Dockerfile
 │  ├─ index.js
